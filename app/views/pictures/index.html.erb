@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+
+    <h2>投稿一覧</h2>
+
+    <%= link_to "写真を投稿する", new_picture_path, class: 'btn btn-primary' %>
+
+    <% @pictures.each do |picture| %>
+      <div class="row">
+        <h4>タイトル:<strong><%= picture.title %></strong></h4>
+        <p>本文:<%= picture.content %></p>
+        <div class="prof-img">
+          <p><%= profile_img(picture.user) if profile_img(picture.user) %></p>
+        </div>
+        <p>【ユーザID :】<%= picture.user_id %>【ユーザ名 :】<%= picture.user.name %></p>
+
+        <%= link_to "編集", edit_picture_path(picture.id), class: 'btn btn-default btn-sm btn-success' %>
+        <%= link_to "削除", picture_path(picture.id), method: :delete, data: { confirm: '本当に削除してよろしいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+<div id="page-top-btn" class="page-top-btn">
+  <p><a class="move-page-top" id="move-page-top">▲</a></p>
+</div>
