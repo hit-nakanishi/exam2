@@ -5,12 +5,18 @@
   <%= f.text_field :title, class: 'form-control', placeholder: "タイトル" %><br>
   <%= f.text_field :content, class: 'form-control', placeholder: "内　容" %><br>
   <%= f.hidden_field :user_id, :value => @picture.user_id %>
+  <%= f.hidden_field :pict_cache, :value => @picture.pict %>
+
+  <div class="field">
+    <%= picture_img(@picture) if picture_img(@picture) %>
+    <%= f.file_field :pict, class: 'btn btn-default btn-sm btn-default' %>
+    <%= f.hidden_field :pict_cache %>
+  </div>      
 
   <div class="prof-img">
-    <p><%= profile_img(@picture.user) if profile_img(@picture.user) %></p>
+    <%= profile_img(@picture.user) if profile_img(@picture.user) %>
   </div>
   <p>【ユーザID :】<%= @picture.user_id %>【ユーザ名 :】<%= @picture.user.name %></p>
-
 
   <%= f.submit '内容確認', class: 'btn btn-primary btn-block' %>
 

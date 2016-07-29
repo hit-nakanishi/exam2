@@ -1,19 +1,28 @@
 <div class="container">
   <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
     
-    <h2>以下の内容で、投稿する。</h2>
+    <h2>以下の内容で投稿</h2>
 
     <%= form_for(@picture) do |f| %>
       <%= f.hidden_field :title %>
       <%= f.hidden_field :content %>
       <%= f.hidden_field :pict %>
+      <%= f.hidden_field :pict_cache %>
       <%= f.hidden_field :user_id %>
 
       <h4>タイトル:<strong><%= @picture.title %></strong></h4>
       <p>本文:<%= @picture.content %></p>
-      <p>写真:<%= @picture.pict %></p>
-      <p>ユーザID :<%= @picture.user_id %></p>
-      <p>【ユーザ名 :】<%= @picture.user.name %></p>
+      
+      <% if @picture.pict.blank? %>
+        <%= picture_img(:pict_cache) if picture_img(:pict_cache) %></p>
+      <% elsif %>
+        <%= picture_img(@picture) if picture_img(@picture) %></p>
+      <% end %>
+
+      <div class="prof-img">
+        <p><%= profile_img(@picture.user) if profile_img(@picture.user) %></p>
+      </div>
+      <p>【ユーザID :】<%= @picture.user_id %>【ユーザ名 :】<%= @picture.user.name %></p>
 
       <%= f.submit "投稿",class: 'btn btn-primary btn-block' %>
 
@@ -24,6 +33,7 @@
       <%= f.hidden_field :title %>
       <%= f.hidden_field :content %>
       <%= f.hidden_field :pict %>
+      <%= f.hidden_field :pict_cache %>
       <%= f.hidden_field :user_id %>
 
       <%= f.submit "戻る", name: 'back', class: 'btn btn-default btn-block' %>

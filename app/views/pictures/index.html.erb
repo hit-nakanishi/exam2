@@ -3,12 +3,14 @@
 
     <h2>投稿一覧</h2>
 
-    <%= link_to "写真を投稿する", new_picture_path, class: 'btn btn-primary' %>
+    <%= link_to "写真を投稿", new_picture_path, class: 'btn btn-primary' %>
 
     <% @pictures.each do |picture| %>
       <div class="row">
         <h4>タイトル:<strong><%= picture.title %></strong></h4>
         <p>本文:<%= picture.content %></p>
+        <p><%= picture_img(picture) if picture_img(picture) %></p>
+
         <div class="prof-img">
           <p><%= profile_img(picture.user) if profile_img(picture.user) %></p>
         </div>
