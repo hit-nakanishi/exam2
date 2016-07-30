@@ -28,7 +28,7 @@
 
     <% end %>
 
-    <%= form_for(@picture, url: new_picture_path, method: 'get') do |f| %>
+    <%= form_for(@picture, url: pictures_pictures_path, method: 'post') do |f| %>
 
       <%= f.hidden_field :title %>
       <%= f.hidden_field :content %>
