@@ -8,10 +8,10 @@ module PicturesHelper
   end
 
   def picture_img(picture)
-    return image_tag(picture.pict) if picture.pict?
+    return image_tag(picture.pict2) if picture.pict2?
 
-    unless picture.pict.blank?
-      pict_url = picture.pict
+    unless picture.pict2.blank?
+      pict_url = picture.pict2
     else
       pict_url = 'no_image_pict.png'
     end

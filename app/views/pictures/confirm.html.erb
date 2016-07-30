@@ -6,15 +6,15 @@
     <%= form_for(@picture) do |f| %>
       <%= f.hidden_field :title %>
       <%= f.hidden_field :content %>
-      <%= f.hidden_field :pict %>
-      <%= f.hidden_field :pict_cache %>
+      <%= f.hidden_field :pict2 %>
+      <%= f.hidden_field :pict2_cache %>
       <%= f.hidden_field :user_id %>
 
       <h4>タイトル:<strong><%= @picture.title %></strong></h4>
       <p>本文:<%= @picture.content %></p>
       
-      <% if @picture.pict.blank? %>
-        <%= picture_img(:pict_cache) if picture_img(:pict_cache) %></p>
+      <% if @picture.pict2.blank? %>
+        <%= picture_img(:pict2_cache) if picture_img(:pict2_cache) %></p>
       <% elsif %>
         <%= picture_img(@picture) if picture_img(@picture) %></p>
       <% end %>
@@ -32,8 +32,8 @@
 
       <%= f.hidden_field :title %>
       <%= f.hidden_field :content %>
-      <%= f.hidden_field :pict %>
-      <%= f.hidden_field :pict_cache %>
+      <%= f.hidden_field :pict2 %>
+      <%= f.hidden_field :pict2_cache %>
       <%= f.hidden_field :user_id %>
 
       <%= f.submit "戻る", name: 'back', class: 'btn btn-default btn-block' %>

@@ -1,5 +1,4 @@
 class PicturesController < ApplicationController
-  # ブログ画面にログインするためにauthenticate_user!を追加する。
   before_action :authenticate_user!
   before_action :set_picture, only: [:edit, :update, :destroy]
 
@@ -23,7 +22,7 @@ class PicturesController < ApplicationController
     set_user
 
     if @picture.save
-      redirect_to pictures_path, notice: "ブログを作成しました！"
+      redirect_to pictures_path, notice: "写真を投稿しました！"
       NoticeMailer.sendmail_picture(@picture).deliver
     else
       render action: 'new'
@@ -36,7 +35,7 @@ class PicturesController < ApplicationController
   def update
     set_user
     if @picture.update(pictures_params)
-     redirect_to pictures_path, notice: "ブログを更新しました！"
+     redirect_to pictures_path, notice: "投稿を更新しました！"
     else
       render action: 'edit'
     end
@@ -44,7 +43,7 @@ class PicturesController < ApplicationController
 
   def destroy
     @picture.destroy
-    redirect_to pictures_path, notice: "ブログを削除しました！"
+    redirect_to pictures_path, notice: "投稿を削除しました！"
   end
   
   def confirm
@@ -55,7 +54,7 @@ class PicturesController < ApplicationController
 
   private
     def pictures_params
-      params.require(:picture).permit(:title, :content, :pict, :pict_cache, :user_id)
+      params.require(:picture).permit(:title, :content, :pict2, :pict2_cache, :user_id)
     end
     
     # idをキーとして値を取得するメソッド
